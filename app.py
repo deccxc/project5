@@ -87,78 +87,46 @@ def slack_post(msg):
         output = True
     )
 
-@app.route('/keyval/<n>', methods=["GET"])
+@app.route('/key/<n>', methods=["GET"])
 def get_val(n):
-    value = str(red.get(n))
-    if n in red:                
-        return jsonify(key=n,
-            value=value[2:],
-            command=('READ '+n),
-            result=True,
-            error='')
+    if n in red:        
+        return red.get(n)
     else:
-        return jsonify(key=n,
-            value=value[2:],
-            command=('READ '+n),
-            result=False,
-            error='Key does not exist')        
+        return ("does not exist in the db")        
  
-@app.route('/keyval', methods=["POST"])
+@app.route('/key', methods=["POST"])
 def add_data():
     post = request.get_json()
     res = list(post.keys())
-    values = list(post.values())
-    n = 0
-    x = None    
+    n = 0    
     for i in res:
         if res[n] in red:   
-            n += 1
-            x = '1 or more keys already exists'            
+            n += 1            
         else:
             red.set(res[n], post[res[n]])
             n += 1
-    return jsonify(key=res,
-        value=values,
-        command=('CREATE '+str(res)),
-        result=True,
-        error=x)
+    return  ''
 
-@app.route('/keyval', methods=["PUT"])
+@app.route('/key', methods=["PUT"])
 def update_data():
     post = request.get_json()
     res = list(post.keys())
-    values = list(post.values())
-    n = 0
-    x = None    
+    n = 0    
     for i in res:
         if res[n] in red:
             red.set(res[n], post[res[n]])   
             n += 1            
         else:
-            x = '1 or more keys doesn\'t exists'
             continue
-    return jsonify(key=res,
-        value=values,
-        command=('UPDATE '+str(res)),
-        result=True,
-        error=x)   
+    return  ''   
 
-@app.route('/keyval/<n>', methods=["DELETE"])
+@app.route('/key/<n>', methods=["DELETE"])
 def delete_data(n):
-    value = str(red.get(n))
-    if n in red:        
+    if n in red:
         red.delete(n)
-        return jsonify(key=n,
-            value=value[2:],
-            command=('DELETE '+n),
-            result=True,
-            error='')
+        return 'poof'
     else:
-        return jsonify(key=n,
-            value=None,
-            command=('DELETE '+n),
-            result=False,
-            error='Key does not exist')          
+        return "Key does not exist"          
 
 
 # Run  this flask server if file is called directly
