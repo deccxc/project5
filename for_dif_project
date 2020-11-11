@@ -1,12 +1,82 @@
 import requests
 
-test = Requests.get(http/35.222.11.160/md5/test)
-
+test = requests.get(http/35.222.11.160/md5/test)
 expected result = 098f6bcd4621d373cade4e832627b4f6
-
 test.json()
-
 if expected_result == test.json[output]:
     print('Test Passed')
 else:
     print('Test Failed')
+
+test = requests.get(http/35.222.11.160/md5/15fish)
+expected result = 3f60f529b3f69e7f6ac1280912da50cc
+test.json()
+if expected_result == test.json[output]:
+    print('Test Passed')
+else:
+    print('Test Failed')
+
+test = requests.get(http/35.222.11.160/factorial/6)
+expected result = 720
+test.json()
+if expected_result == test.json[output]:
+    print('Test Passed')
+else:
+    print('Test Failed')
+
+test = requests.get(http/35.222.11.160/factorial/5)
+expected result = 120
+test.json()
+if expected_result == test.json[output]:
+    print('Test Passed')
+else:
+    print('Test Failed')
+
+test = requests.get(http/35.222.11.160/is-prime/7)
+expected result = True
+test.json()
+if expected_result == test.json[output]:
+    print('Test Passed')
+else:
+    print('Test Failed')
+
+test = requests.get(http/35.222.11.160/is-prime/9)
+expected result = False
+test.json()
+if expected_result == test.json[output]:
+    print('Test Passed')
+else:
+    print('Test Failed')
+
+test = requests.get(http/35.222.11.160/fibonacci/10)
+expected result = 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+test.json()
+if expected_result == test.json[output]:
+    print('Test Passed')
+else:
+    print('Test Failed')
+
+test = requests.get(http/35.222.11.160/fibonacci/7)
+expected result = 1, 1, 2, 3, 5, 8, 13
+test.json()
+if expected_result == test.json[output]:
+    print('Test Passed')
+else:
+    print('Test Failed')
+
+test = requests.get(http/35.222.11.160/slack-alert/Howdy)
+expected result =
+test.json()
+if expected_result == test.json[output]:
+    print('Test Passed')
+else:
+    print('Test Failed')
+
+test = requests.get(http/35.222.11.160/slack-alert/Gotcha)
+expected result = 
+test.json()
+if expected_result == test.json[output]:
+    print('Test Passed')
+else:
+    print('Test Failed')
+
