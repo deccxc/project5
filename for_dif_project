@@ -1,0 +1,12 @@
+import requests
+
+test = Requests.get(http/35.222.11.160/md5/test)
+
+expected result = 098f6bcd4621d373cade4e832627b4f6
+
+test.json()
+
+if expected_result == test.json[output]:
+    print('Test Passed')
+else:
+    print('Test Failed')
